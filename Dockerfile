@@ -1,5 +1,6 @@
 # node 20 is lts at the time of writing
-FROM node:lts-alpine
+# FROM node:lts-alpine
+FROM node:20-bookworm
 
 # Create app directory
 WORKDIR /usr/src/app

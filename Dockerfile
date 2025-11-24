@@ -30,7 +30,7 @@ RUN apk add --no-cache \
 
 ENV PATH="$PATH:/root/.local/bin"
 
-//RUN pipx install pdfCropMargins
+#RUN pipx install pdfCropMargins
 # Install pdfCropMargins WITHOUT pipx
 RUN pip install --upgrade pip
 RUN pip install pdfCropMargins

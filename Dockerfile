@@ -1,6 +1,5 @@
 # node 20 is lts at the time of writing
-# FROM node:lts-alpine
-FROM node:20-bookworm
+FROM node:lts-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -20,18 +19,10 @@ RUN wget https://github.com/zzet/fp-docker/raw/f2b41fb0af6bb903afd0e429d5487acc6
     rm -rf kindlegen
 
 #RUN apk add --no-cache pipx
-# Install system tools for pdfCropMargins
-RUN apt-get update && apt-get install -y \
-    python3 python3-pip python3-venv \
-    ghostscript \
-    poppler-utils \
-    && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="$PATH:/root/.local/bin"
 
 #RUN pipx install pdfCropMargins
-# Install pdfCropMargins WITHOUT pipx
-RUN pip install pdfCropMargins
 
 # Copy files needed by npm install
 COPY package*.json ./

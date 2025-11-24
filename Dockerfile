@@ -21,18 +21,17 @@ RUN wget https://github.com/zzet/fp-docker/raw/f2b41fb0af6bb903afd0e429d5487acc6
 #RUN apk add --no-cache pipx
 # Install python + build deps
 RUN apk add --no-cache \
-        python3 \
-        py3-pip \
-        gcc \
-        musl-dev \
-        libffi-dev \
-        openssl-dev
+    python3 \
+    py3-pip \
+    gcc \
+    musl-dev \
+    libffi-dev \
+    openssl-dev
 
 ENV PATH="$PATH:/root/.local/bin"
 
 #RUN pipx install pdfCropMargins
 # Install pdfCropMargins WITHOUT pipx
-RUN pip install --upgrade pip
 RUN pip install pdfCropMargins
 
 # Copy files needed by npm install

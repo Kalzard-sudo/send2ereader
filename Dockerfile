@@ -19,8 +19,17 @@ RUN wget https://github.com/zzet/fp-docker/raw/f2b41fb0af6bb903afd0e429d5487acc6
     rm -rf kindlegen
 
 #RUN apk add --no-cache pipx
-RUN apk add --no-cache python3 py3-pip python3-dev gcc musl-dev
-RUN pip install --upgrade pip pipx
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    py3-virtualenv \
+    gcc \
+    musl-dev \
+    libffi-dev \
+    openssl-dev
+
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install pipx
 RUN pipx ensurepath
 
 ENV PATH="$PATH:/root/.local/bin"

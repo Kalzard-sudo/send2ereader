@@ -19,14 +19,12 @@ RUN wget https://github.com/zzet/fp-docker/raw/f2b41fb0af6bb903afd0e429d5487acc6
     rm -rf kindlegen
 
 #RUN apk add --no-cache pipx
-# Install python + build deps
-RUN apk add --no-cache \
-    python3 \
-    py3-pip \
-    gcc \
-    musl-dev \
-    libffi-dev \
-    openssl-dev
+# Install system tools for pdfCropMargins
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip python3-venv \
+    ghostscript \
+    poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="$PATH:/root/.local/bin"
 
